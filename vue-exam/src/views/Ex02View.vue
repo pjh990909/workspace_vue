@@ -8,6 +8,10 @@
         <li>{{ menus[2] }}</li>
     </ul>
     
+    <ul>
+        <li v-bind:key="i" v-for="(menu,i) in menus">{{ menus[i] }}</li>
+    </ul>
+    
     <table border="1">
         <thead>
             <tr>
@@ -54,7 +58,9 @@ export default {
             imgUrl:"https://mml.pstatic.net/www/mobile/edit/20240318_1095/upload_1710771613913KFcqp.gif"
         };
     },
-    methods: {},
+    methods: {
+        
+    },
 };
 </script>
 
