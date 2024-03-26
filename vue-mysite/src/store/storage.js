@@ -13,6 +13,9 @@ export default createStore({
         },
         setToken(state, payload) {
             state.token = payload;
+        },
+        setAutName(state, payload) {
+            state.authUser.name = payload;
         }
 
     },
