@@ -2,35 +2,8 @@
     <div>
         <div id="wrap">
 
-            <div id="header" class="clearfix">
-                <h1>
-                    <a href="">MySite</a>
-                </h1>
-
-                <!-- 
-                <ul>
-                    <li>황일영 님 안녕하세요^^</li>
-                    <li><a href="" class="btn_s">로그아웃</a></li>
-                    <li><a href="" class="btn_s">회원정보수정</a></li>
-                </ul>
-                -->
-                <ul>
-                    <li><a href="" class="btn_s">로그인</a></li>
-                    <li><a href="" class="btn_s">회원가입</a></li>
-                </ul>
-
-            </div>
-            <!-- //header -->
-
-            <div id="nav">
-                <ul class="clearfix">
-                    <li><a href="">입사지원서</a></li>
-                    <li><a href="">게시판</a></li>
-                    <li><a href="">갤러리</a></li>
-                    <li><a href="">방명록</a></li>
-                </ul>
-            </div>
-            <!-- //nav -->
+            <AppHeader />
+            <!-- //header+nav -->
 
             <div id="container" class="clearfix">
                 <div id="aside">
@@ -114,9 +87,7 @@
             </div>
             <!-- //container  -->
 
-            <div id="footer">
-                Copyright ⓒ 2020 황일영. All right reserved
-            </div>
+            <AppFooter />
             <!-- //footer -->
 
         </div>
@@ -127,10 +98,15 @@
 <script>
 import "@/assets/css/user.css"
 import axios from 'axios';
+import AppFooter from "@/components/AppFooter.vue"
+import AppHeader from "@/components/AppHeader.vue"
 
 export default {
     name: "ModifyFormView",
-    components: {},
+    components: {
+        AppFooter,
+        AppHeader
+    },
     data() {
         return {
             userVo: {
@@ -143,7 +119,7 @@ export default {
         };
     },
     methods: {
-        login() {
+        getAuthUser() {
             axios({
                 method: 'get', // put, post, delete                   
                 url: 'http://localhost:9000/api/users/modify',
@@ -158,7 +134,15 @@ export default {
                 responseType: 'json' //수신타입
             }).then(response => {
                 console.log(response); //수신데이타
-                this.userVo = response.data;
+                if(response.data.result == "success"){
+                    this.userVo = response.data.apiData;
+                }else{
+                    console.log(response.data.message);
+                    alert("로그인상태에서 이용해주세요.");
+                    this.$router.push({path:'/user/loginform'});
+                }
+                
+
             }).catch(error => {
                 console.log(error);
             });
@@ -179,14 +163,30 @@ export default {
 
                 responseType: 'json' //수신타입
             }).then(response => {
+                console.log("-----------------------------");
                 console.log(response); //수신데이타
+                console.log("-----------------------------");
+                console.log(response.data.apiData);
+                console.log("-----------------------------");
+                
+                if(response.data.result == "success"){
+                    let setAutName = response.data.apiData
 
-                let setAutName = response.data
-
-                if(setAutName != "fail"){
                     this.$store.commit("setAutName", setAutName);
 
                     this.$router.push({path:'/'});
+                }else{
+                    console.log("result=fail");
+                    console.log(response.data.massage);
+                    alert("로그인후 이용해주세요");
+                    this.$router.push({path:'/user/loginform'});
+                }
+
+                /*
+                
+
+                if(setAutName != "fail"){
+                    
                 }else{
                     alert("로그인하세요");
                     this.$store.commit("setAuthUser", null);
@@ -194,7 +194,7 @@ export default {
 
                     //this.$router.push({path:'/user/loginform'});
                 }
-
+                */
                 
 
             }).catch(error => {
@@ -204,7 +204,7 @@ export default {
         }
     },
     created() {
-        this.login();
+        this.getAuthUser();
     }
 };
 </script>

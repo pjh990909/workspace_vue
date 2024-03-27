@@ -9,16 +9,17 @@
                     <td><input type="password" name="password" v-model="guestbookVo.password"></td>
                 </tr>
                 <tr>
-                    <td colspan="4"><textarea v-model="guestbookVo.content" name="content" cols="72" rows="5"></textarea></td>
+                    <td colspan="4"><textarea v-model="guestbookVo.content" name="content" cols="72"
+                            rows="5"></textarea></td>
                 </tr>
                 <tr>
                     <td colspan="4"><button type="submit">등록</button></td>
                 </tr>
             </table>
         </form>
-        <br> 
+        <br>
 
-        <div v-bind:key="i" v-for="(guestbookVo,i) in guestbookList">
+        <div v-bind:key="i" v-for="(guestbookVo, i) in guestbookList">
             <table border="1" width="540px">
                 <tr>
                     <td>[{{ guestbookVo.no }}]</td>
@@ -34,7 +35,7 @@
             </table>
             <br>
         </div>
-      
+
     </div>
 </template>
 
@@ -48,14 +49,14 @@ export default {
         return {
             guestbookList: [],
             guestbookVo: {
-                name:"",
-                password:"",
-                content:""
+                name: "",
+                password: "",
+                content: ""
             }
         };
     },
     methods: {
-        getList(){
+        getList() {
             console.log("데이터 가져오기")
 
             axios({
@@ -74,7 +75,7 @@ export default {
             });
 
         },
-        addGuest(){
+        addGuest() {
             console.log("저장");
             console.log(this.guestbookVo);
             axios({
@@ -93,7 +94,7 @@ export default {
             });
         }
     },
-    created(){
+    created() {
         this.getList();
     }
 };
