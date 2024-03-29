@@ -10,8 +10,8 @@
                     <h2>회원</h2>
                     <ul>
                         <li>회원정보</li>
-                        <li>로그인</li>
-                        <li>회원가입</li>
+                        <li><router-link class="btn_s" to="/user/loginform">로그인</router-link></li>
+                        <li><router-link class="btn_s" to="/user/joinform">회원가입</router-link></li>
                     </ul>
                 </div>
                 <!-- //aside -->

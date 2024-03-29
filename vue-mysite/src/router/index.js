@@ -5,6 +5,13 @@ import ModifyFormView from '@/views/user/ModifyFormView.vue'
 import AttachResultView from '@/views/attach/AttachResultView.vue'
 import AttachFormView from '@/views/attach/AttachFormView.vue'
 import JoinFormView from '@/views/user/JoinFormView.vue'
+import JoinOkView from '@/views/user/JoinOkView.vue'
+import AddListView from '@/views/guestbook/AddListView.vue'
+import DelFormView from '@/views/guestbook/DelFormView.vue'
+import ListView from '@/views/board/ListView.vue'
+import BoardModifyFormView from '@/views/board/BoardModifyFormView.vue'
+import ReadView from '@/views/board/ReadView.vue'
+import WriteFormView from '@/views/board/WriteFormView.vue'
 
 const routes = [
   {
@@ -18,7 +25,12 @@ const routes = [
     component: LoginFormView
   },
   {
-    path: '/user/modifyform/:personId',
+    path: '/user/joinok',
+    name: '/user/joinok',
+    component: JoinOkView
+  },
+  {
+    path: '/user/modifyform',
     name: '/user/modifyform',
     component: ModifyFormView
   },
@@ -37,7 +49,36 @@ const routes = [
     name: '/attach/attachform',
     component: AttachFormView
   },
-  
+  {
+    path: '/guestbook/addlist',
+    name: '/guestbook/addlist',
+    component: AddListView
+  },
+  {
+    path: '/guestbook/delete/:no',
+    name: '/guestbook/delete',
+    component: DelFormView
+  },
+  {
+    path: '/board/list',
+    name: '/board/list',
+    component: ListView
+  },
+  {
+    path: '/board/modify',
+    name: '/board/modify',
+    component: BoardModifyFormView
+  },
+  {
+    path: '/board/read/:no',
+    name: '/board/read',
+    component: ReadView
+  },
+  {
+    path: '/board/write',
+    name: '/board/write',
+    component: WriteFormView
+  },
 ]
 
 const router = createRouter({
