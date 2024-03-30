@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import TrainerLoginSuccess from '../views/TrainerLoginSuccess.vue'
 import TrainerJoinForm from '../views/TrainerJoinForm.vue'
+import TrainerLoginView from '../views/TrainerLoginView.vue'
+import TrainerIntroductionView from '../views/TrainerIntroductionView.vue'
 
 const routes = [
   {
@@ -12,6 +14,16 @@ const routes = [
     path: '/gym/trainerjoin',
     name: '/gym/trainerjoin',
     component: TrainerJoinForm
+  },
+  {
+    path: '/gym/trainerlogin',
+    name: '/gym/trainerlogin',
+    component: TrainerLoginView
+  },
+  {
+    path: '/gym/trainerintroduction',
+    name: '/gym/trainerintroduction',
+    component: TrainerIntroductionView
   },
   
 ]
