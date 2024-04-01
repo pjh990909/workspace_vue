@@ -4,7 +4,7 @@
 
 
         <img v-if="trainerVo.saveName!=null" id="trainer-img" v-bind:src="`http://localhost:9000/upload/${trainerVo.saveName}`">
-        <img id="trainer-img" src="@/assets/image/image.png">
+        <img v-else id="trainer-img" src="https://cdn-icons-png.flaticon.com/512/85/85488.png">
         <!--이름-->
         <div>
             <label class="">이름:</label>
