@@ -9,7 +9,7 @@
                     <label class="">핸드폰번호:</label><span class="">010-2222-2222</span><br><br>
                     <label class="">소개글:</label><br><span class="">pt경력은 n년차이고 친절하고 잘 알려드리겠습니다!</span>
                 </td>
-                <td><button v-on:click="removePhone(phonebookVo.personId)" type="button">PT쌤 등록하기!</button></td>
+                <td><button type="button">PT쌤 등록하기!</button></td>
             </tr>
             <br>
             <br>

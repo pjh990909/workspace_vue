@@ -3,8 +3,8 @@
         <h1>로그인성공!(트레이너)</h1>
 
 
-        <img id="trainer-img" v-bind:src="`http://localhost:9000/upload/${trainerVo.saveName}`">
-
+        <img v-if="trainerVo.saveName!=null" id="trainer-img" v-bind:src="`http://localhost:9000/upload/${trainerVo.saveName}`">
+        <img id="trainer-img" src="@/assets/image/image.png">
         <!--이름-->
         <div>
             <label class="">이름:</label>
@@ -64,12 +64,9 @@ export default {
                 responseType: 'json' //수신타입
             }).then(response => {
                 console.log(response.data.apiData); //수신데이타
-                if (response.data.result == "success") {
-                    this.trainerVo = response.data.apiData;
-                } else {
-                    alert("로그인상태에서 이용해주세요.");
-                    this.$router.push({ path: '/gym/trainerlogin' });
-                }
+                
+                this.trainerVo = response.data.apiData;
+                
 
 
             }).catch(error => {
