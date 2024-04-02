@@ -5,8 +5,8 @@
         <div id="trainer-logo2">마음에 드는 강사님을 선택해보세요!</div>
 
         <div id="trainer-btn">
-            <button class="trainerinsert-btn" type="button">트레이너 등록</button>
-            <button class="trainerupdate-btn" type="button">트레이너 수정</button>
+            <button class="trainerinsert-btn" type="button"><router-link id="trainerinsert-link" to="/trainer/enroll">트레이너 등록</router-link></button>
+            <button class="trainerupdate-btn" type="button"><router-link id="trainerupdate-link" to="/trainer/enroll">트레이너 수정</router-link></button>
         </div>
         <div id="trlist">
             <div id="trainerList" v-bind:key="i" v-for="(trainerVo, i) in trainerList">

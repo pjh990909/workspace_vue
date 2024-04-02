@@ -70,6 +70,28 @@ form {
     cursor: pointer;
 }
 
+#trainerinsert-link{
+    text-decoration-line: none;
+    font-size: 70px;
+    font-family: "VITRO INSPIRE TTF";
+    color: #ffffff;
+    line-height: 1.5;
+    text-align: center;
+    left: 202px;
+    top: 574.496px;
+    z-index: 25;
+}
+#trainerupdate-link{
+    text-decoration-line: none;
+    font-size: 70px;
+    font-family: "VITRO INSPIRE TTF";
+    color: #FF0066;
+    line-height: 1.5;
+    text-align: center;
+    left: 654px;
+    top: 574.496px;
+    z-index: 26;
+}
 #trainer-btn .trainerinsert-btn {
     border-width: 8px;
     border-color: #ffffff;
@@ -81,14 +103,6 @@ form {
     width: 374px;
     height: 106px;
     z-index: 22;
-    font-size: 70px;
-    font-family: "VITRO INSPIRE TTF";
-    color: #ffffff;
-    line-height: 1.5;
-    text-align: center;
-    left: 202px;
-    top: 574.496px;
-    z-index: 25;
     margin: 0px 45px 0px 45px;
 }
 
@@ -103,14 +117,6 @@ form {
     width: 374px;
     height: 106px;
     z-index: 23;
-    font-size: 70px;
-    font-family: "VITRO INSPIRE TTF";
-    color: #FF0066;
-    line-height: 1.5;
-    text-align: center;
-    left: 654px;
-    top: 574.496px;
-    z-index: 26;
     margin: 0px 45px 0px 45px;
 }
 
