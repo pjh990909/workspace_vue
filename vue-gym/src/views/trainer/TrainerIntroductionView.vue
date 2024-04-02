@@ -4,28 +4,37 @@
 
         <div id="trainer-logo2">마음에 드는 강사님을 선택해보세요!</div>
 
+        <div id="trainer-btn">
+            <button class="trainerinsert-btn" type="button">트레이너 등록</button>
+            <button class="trainerupdate-btn" type="button">트레이너 수정</button>
+        </div>
+        <div id="trlist">
+            <div id="trainerList" v-bind:key="i" v-for="(trainerVo, i) in trainerList">
+                <li>
+                    <div>
+                        <img id="trainerlist-img" v-bind:src="`http://localhost:9000/upload/${trainerVo.saveName}`">
+                    </div>
 
-        <div id="trainerList" v-bind:key="i" v-for="(trainerVo, i) in trainerList">
-            <li>
-                <img id="trainerlist-img" v-bind:src="`http://localhost:9000/upload/${trainerVo.saveName}`">
-                <br>
-                <label id="trainername-introduction" class="trainer-introduction-information">{{ trainerVo.name }} 강사님</label>
-                <br>
-                <label class="trainer-introduction-information">경력:</label>
-                <span class="trainer-introduction-information">{{ trainerVo.content }}</span>
-                <br>
-                <select id="choice-pt" name="pt" v-model="memberVo.pt"> <!--기본값을 지정한값으로 한다(v-model로 바뀐값을 보낼수도 있다)-->
-                    <option class="choicelist" value="">PT횟수</option>
-                    <option class="choicelist" value="10">10</option>
-                    <option class="choicelist" value="20">20</option>
-                    <option class="choicelist" value="30">30</option>
-                </select>
-                <input type="hidden" value="" v-model="trainerVo.no">
-                <br>
-                <button v-on:click="ptup" type="button">등록</button>
-            </li>
+                    <div>
+                        <label id="trainername-introduction" class="trainer-introduction-information">{{ trainerVo.name}} 강사님</label>
+                    </div>
+                    <div>
+                        <label class="trainer-introduction-information">경력:</label>
+                        <span class="trainer-introduction-information">{{ trainerVo.career }}</span>
+                    </div>
+                    <div class="pt-insert">
+                        <select name="pt"> <!--기본값을 지정한값으로 한다(v-model로 바뀐값을 보낼수도 있다)-->
+                            <option class="" value="">PT횟수</option>
+                            <option class="" value="10">10</option>
+                            <option class="" value="20">20</option>
+                            <option class="" value="30">30</option>
+                        </select>
+                        <input type="hidden" value="" v-model="trainerVo.trainer_no">
 
-
+                        <button v-on:click="ptup($event, trainerVo.trainer_no)" type="button">등록</button>
+                    </div>
+                </li>
+            </div>
         </div>
     </div>
 </template>
@@ -41,14 +50,14 @@ export default {
         return {
             trainerList: [],
             trainerVo: {
-                no: this.$route.params.no,
+                trainer_no: this.$route.params.no,
                 name: "",
-                content: "",
-                saveName: ""
+                saveName: "",
+                career: ""
             },
-            memberVo: {
-                ptno: "",
-                pt: ""
+            ptVo: {
+                trainer_no: "",
+                pt_count: ""
             }
 
         };
@@ -73,18 +82,24 @@ export default {
             });
 
         },
-        ptup() {
-            console.log(this.pt)
+        ptup(event, ptno) {
+            //console.log("=======================");
+            //console.log(event.target.parentElement.firstElementChild.value);
+            //console.log(ptno);
+            this.ptVo.trainer_no = ptno;
+            this.ptVo.pt_count = event.target.parentElement.firstElementChild.value;
+            
+            console.log(this.ptVo);
 
             axios({
-                method: 'put', // put, post, delete                   
-                url: 'http://localhost:9000/api/users/modify',
+                method: 'post', // put, post, delete                   
+                url: 'http://localhost:9000/api/pt/registration',
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     "Authorization": "Bearer " + this.$store.state.token
                 },//전송타입+토큰
                 //params: guestbookVo, //get방식 파라미터로 값이 전달
-                data: this.memberVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
+                data: this.ptVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
 
                 responseType: 'json' //수신타입
             }).then(response => {
@@ -96,20 +111,6 @@ export default {
                 } else {
                     alert("횟수를 선택해주세요");
                 }
-
-                /*
-                
-
-                if(setAutName != "fail"){
-                    
-                }else{
-                    alert("로그인하세요");
-                    this.$store.commit("setAuthUser", null);
-                    this.$store.commit("setToken", null);
-
-                    //this.$router.push({path:'/user/loginform'});
-                }
-                */
 
 
             }).catch(error => {

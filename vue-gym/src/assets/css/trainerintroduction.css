@@ -1,15 +1,40 @@
 @charset "UTF-8";
 
-body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, 
-input, fieldset, legend, p, select, table, th, td, tr,
-textarea, button, form {margin: 0; padding: 0;}
+body,
+div,
+ul,
+li,
+dl,
+dt,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+fieldset,
+legend,
+p,
+select,
+table,
+th,
+td,
+tr,
+textarea,
+button,
+form {
+    margin: 0;
+    padding: 0;
+}
 
 
 #trainerList-All {
     width: 1125px;
     height: 2436px;
     background-color: #313131;
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 #trainers-logo {
@@ -36,11 +61,70 @@ textarea, button, form {margin: 0; padding: 0;}
     padding-top: 32px;
 }
 
-#trainerList{
-    padding: 0px 79.5px 0px 79.5px;
+#trainer-btn {
+    text-align: center;
+    margin-top: 44px;
 }
 
-#trainerList>li{
+#trainer-btn>button{
+    cursor: pointer;
+}
+
+#trainer-btn .trainerinsert-btn {
+    border-width: 8px;
+    border-color: #ffffff;
+    border-style: solid;
+    border-radius: 20px;
+    background-color: #ff0066;
+    left: 141px;
+    top: 469px;
+    width: 374px;
+    height: 106px;
+    z-index: 22;
+    font-size: 70px;
+    font-family: "VITRO INSPIRE TTF";
+    color: #ffffff;
+    line-height: 1.5;
+    text-align: center;
+    left: 202px;
+    top: 574.496px;
+    z-index: 25;
+    margin: 0px 45px 0px 45px;
+}
+
+#trainer-btn .trainerupdate-btn {
+    border-width: 8px;
+    border-color: #ff0066;
+    border-style: solid;
+    border-radius: 20px;
+    background-color: #ffffff;
+    left: 594px;
+    top: 469px;
+    width: 374px;
+    height: 106px;
+    z-index: 23;
+    font-size: 70px;
+    font-family: "VITRO INSPIRE TTF";
+    color: #FF0066;
+    line-height: 1.5;
+    text-align: center;
+    left: 654px;
+    top: 574.496px;
+    z-index: 26;
+    margin: 0px 45px 0px 45px;
+}
+
+#trlist{
+    overflow:scroll; width:1125px; height:1500px;
+    scrollbar-width: none;
+}
+
+#trainerList {
+    padding: 0px 79.5px 0px 79.5px;
+   
+}
+
+#trainerList>li {
     width: 478px;
     text-align: center;
     list-style-type: none;
@@ -58,7 +142,7 @@ textarea, button, form {margin: 0; padding: 0;}
     width: 346px;
     height: 346px;
     z-index: 6;
-    margin-top: 134px;
+    margin-top: 86px;
     margin-bottom: 42px;
 }
 
@@ -73,7 +157,7 @@ textarea, button, form {margin: 0; padding: 0;}
     z-index: 8;
 }
 
-#trainerList>li>select{
+#trainerList>li>.pt-insert>select {
     font-size: 60px;
     font-family: "VITRO CORE TTF";
     color: #FF0066;
@@ -95,9 +179,10 @@ textarea, button, form {margin: 0; padding: 0;}
     height: 101px;
     z-index: 17;
     margin: 25px 0px 46px 0px;
+    cursor: pointer;
 }
 
-#trainerList>li>button {
+#trainerList>li>.pt-insert>button {
     font-size: 60px;
     font-family: "VITRO CORE TTF";
     color: #ffffff;
@@ -110,14 +195,11 @@ textarea, button, form {margin: 0; padding: 0;}
     border-color: #ffffff;
     border-style: solid;
     border-radius: 20px;
-    background-color: #ff0066; 
+    background-color: #ff0066;
     left: 199px;
     top: 1322px;
     width: 246px;
     height: 96px;
     z-index: 13;
-  }
-  
-  
-
-  
+    cursor: pointer;
+}
