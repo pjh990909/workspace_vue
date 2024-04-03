@@ -88,7 +88,6 @@ export default {
         return {
             file: "",
             name: "",
-            gender: ""
         };
     },
     methods: {

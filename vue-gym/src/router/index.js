@@ -3,8 +3,12 @@ import TrainerLoginSuccess from '../views/trainer/TrainerLoginSuccess.vue'
 import TrainerJoinForm from '../views/trainer/TrainerJoinForm.vue'
 import TrainerLoginView from '../views/trainer/TrainerLoginView.vue'
 import TrainerIntroductionView from '../views/trainer/TrainerIntroductionView.vue'
+import trainerEnrollView from '../views/trainer/trainerEnrollView.vue'
+import trainerEnrollTwoView from '../views/trainer/trainerEnrollTwoView.vue'
+import MyMemberListView from '../views/trainer/MyMemberListView.vue'
 import MemberLoginView from '../views/member/MemberLoginView.vue'
 import AfterLoginFormView from '../views/member/AfterLoginFormView.vue'
+
 
 const routes = [
   {
@@ -37,7 +41,21 @@ const routes = [
     name: '/gym/memberloginsussecc',
     component: AfterLoginFormView
   },
-  
+  {
+    path: '/gym/trainerenroll',
+    name: '/gym/trainerenroll',
+    component: trainerEnrollView
+  },
+  {
+    path: '/gym/trainerenrolltwo',
+    name: '/gym/trainerenrolltwo',
+    component: trainerEnrollTwoView
+  },
+  {
+    path: '/gym/mymemberList',
+    name: '/gym/mymemberList',
+    component: MyMemberListView
+  },
 ]
 
 const router = createRouter({

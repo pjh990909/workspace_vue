@@ -121,16 +121,19 @@ form {
 }
 
 #trlist{
-    overflow:scroll; width:1125px; height:1500px;
+    overflow:scroll;
+    width:1125px; 
+    height: 1500px;
     scrollbar-width: none;
 }
 
 #trainerList {
-    padding: 0px 79.5px 0px 79.5px;
+    padding: 0px 75.5px 0px 75.5px;
+    
    
 }
 
-#trainerList>li {
+#trainerListli {
     width: 478px;
     text-align: center;
     list-style-type: none;
