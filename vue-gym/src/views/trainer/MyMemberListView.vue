@@ -77,7 +77,7 @@ export default {
                 responseType: 'json' //수신타입
             }).then(response => {
                 console.log(response.data.apiData); //수신데이타
-                this.ptList = response.data.apiData;
+                this.ptList = response.data.apiData.ptList;
             }).catch(error => {
                 console.log(error);
             });
