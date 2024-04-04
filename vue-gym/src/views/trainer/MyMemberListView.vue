@@ -17,21 +17,27 @@
                         <th class="postTableHeadData">강사</th>
                     </tr>
                 </thead>
-                <tbody id="postTableBody" v-bind:key="i" v-for="(myMemberVo, i) in ptList">
+                <tbody id="postTableBody" v-bind:key="index" v-for="(myMemberVo, index) in ptList">
                     <tr>
-                        <td class="postTableBodyData">{{ myMemberVo.membername }}</td>
+                        <td class="postTableBodyData"><RouterLink :to="`/gym/tls?no=${myMemberVo.no}`">{{ myMemberVo.membername }}</RouterLink></td>
                         <td class="postTableBodyData">{{ myMemberVo.pt_count }}</td>
                         <td class="postTableBodyData">{{ myMemberVo.trainername }}</td>
                     </tr>
                 </tbody>
             </table>
-            <input type="text" id="postSearch" placeholder="검색">
+            <input type="text" id="postSearch" placeholder="검색" v-model="myMemberVo.keyword" v-on:keyup.enter="search">
             <ol id="memberList">
-                <li class="li">이전</li>
-                <li id="memberlistpage" v-bind:key="i" v-for="(i) in endNo">
-                    <a v-on:click.prevent="list(i + 1)" href="">{{ i + 1 }}</a>
+
+
+                <li class="" v-if="prev != false" v-on:click="prevPage">이전</li>
+                <li class="" v-else-if="prev == true" v-on:click="prevPage">이전</li>
+                <li id="memberlistpage" v-bind:key="index" v-for="(i, index) in endNo-startNo+1">
+
+                    <a v-on:click.prevent="list(startNo+i)" href="">{{startNo+i-1}}</a>
+
                 </li>
-                <li>다음</li>
+                <li v-if="next == true" v-on:click="nextPage">다음</li>
+
             </ol>
 
         </div>
@@ -46,6 +52,7 @@
 import "@/assets/css/MemberList.css"
 import axios from 'axios';
 
+
 export default {
     name: "MyMemberListView",
     components: {},
@@ -53,17 +60,29 @@ export default {
         return {
             ptList: [],
             myMemberVo: {
-                
-                crtPage: 1 ,
-                keyword:""
+
+                crtPage: 1,
+                keyword: ""
             },
-            endNo:""
+            startNo: 0,
+            endNo: 0,
+            next: "",
+            prev: ""
         };
     },
     methods: {
-        getMymemberList(crtPage) {
+        getMymemberList(list) {
             console.log("데이터 가져오기")
-            this.myMemberVo.crtPage = crtPage;
+            if (this.myMemberVo.crtPage == 1) {
+                this.myMemberVo.crtPage = 1;
+            } else if (this.myMemberVo.crtPage < 1) {
+                this.myMemberVo.crtPage = 1;
+            }
+            else {
+                this.myMemberVo.crtPage = list - 1;
+            }
+
+            console.log(this.myMemberVo.crtPage);
             axios({
                 method: 'post', // put, post, delete                   
                 url: 'http://localhost:9000/api/pt/mymemberlist',
@@ -78,14 +97,38 @@ export default {
             }).then(response => {
                 console.log(response.data.apiData); //수신데이타
                 this.ptList = response.data.apiData.ptList;
+                this.endNo = response.data.apiData.endPageBtnNo;
+                this.startNo = response.data.apiData.startPageBtnNo;
+                this.next = response.data.apiData.next;
+                this.prev = response.data.apiData.prev;
             }).catch(error => {
                 console.log(error);
             });
 
         },
+        search() {
+            this.myMemberVo.crtPage = 1;
+            this.getMymemberList();
+        },
+        list(page) {
+            this.myMemberVo.crtPage = page;
+            this.getMymemberList(this.myMemberVo.crtPage);
+        },
+        prevPage() {
+            if (this.prev == false) {
+                console.log(this.myMemberVo.crtPage);
+                this.getMymemberList(this.myMemberVo.crtPage);
+            }
+        },
+        nextPage() {
+            if (this.next == true) {
+                this.myMemberVo.crtPage = this.myMemberVo.crtPage + 6;
+                this.getMymemberList(this.myMemberVo.crtPage);
+            }
+        }
     },
     created() {
-        this.getMymemberList(1);
+        this.getMymemberList();
     }
 };
 </script>
