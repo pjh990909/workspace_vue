@@ -3,7 +3,7 @@
         <form v-on:submit.prevent="addGuest" action="" method="">
             <table border="1" width="540px">
                 <tr>
-                    <td>이름</td>
+                    <td>이름aaa</td>
                     <td><input type="text" name="name" v-model="guestbookVo.name"></td>
                     <td>비밀번호</td>
                     <td><input type="password" name="password" v-model="guestbookVo.password"></td>
@@ -61,7 +61,7 @@ export default {
 
             axios({
                 method: 'get', // put, post, delete                   
-                url: 'http://localhost:9000/api/guests',
+                url: `${this.$store.state.apiBaseUrl}/api/guests`,
                 headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
                 //params: guestbookVo, //get방식 파라미터로 값이 전달
                 //data: guestbookVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
@@ -80,7 +80,7 @@ export default {
             console.log(this.guestbookVo);
             axios({
                 method: 'post', // put, post, delete                   
-                url: 'http://localhost:9000/api/guests',
+                url: `${this.$store.state.apiBaseUrl}/api/guests`,
                 headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
                 //params: guestbookVo, //get방식 파라미터로 값이 전달
                 data: this.guestbookVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달

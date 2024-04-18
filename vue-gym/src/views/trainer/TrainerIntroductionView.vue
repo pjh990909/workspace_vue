@@ -34,7 +34,9 @@
                         <button v-on:click="ptup($event, trainerVo.trainer_no)" type="button">등록</button>
                     </div>
                 </li>
+                
             </div>
+            
         </div>
     </div>
 </template>

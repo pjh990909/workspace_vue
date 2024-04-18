@@ -78,7 +78,9 @@
                             <tr>
                                 <td colspan="4">{{ guestbookVo.content }}</td>
                             </tr>
+                            <input type="hidden" v-bind:value= "i">
                         </table>
+                        
                         <!-- //guestRead -->
 
                         
