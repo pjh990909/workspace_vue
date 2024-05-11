@@ -65,7 +65,7 @@ export default {
         modifyform(){
             axios({
 				method: 'get', // put, post, delete                   
-				url: 'http://localhost:9000/api/phonebooks/'+this.phonebookVo.personId,
+				url: `${this.$store.state.apiBaseUrl}/api/phonebooks/`+this.phonebookVo.personId,
 				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
 				//params: this.phonebookVo.personId, //get방식 파라미터로 값이 전달
 				//data: this.phonebookVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달
@@ -82,7 +82,7 @@ export default {
         modify(){
             axios({
 				method: 'put', // put, post, delete                   
-				url: 'http://localhost:9000/api/phonebooks/'+this.phonebookVo.personId,
+				url: `${this.$store.state.apiBaseUrl}/api/phonebooks/`+this.phonebookVo.personId,
 				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
 				//params:this.phonebookVo , //get방식 파라미터로 값이 전달
 				data: this.phonebookVo, //put, post, delete 방식 자동으로 JSON으로 변환 전달

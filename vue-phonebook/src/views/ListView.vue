@@ -67,7 +67,7 @@ export default {
 
 			axios({
 				method: 'get', // put, post, delete                   
-				url: 'http://localhost:9000/api/phonebooks',
+				url: `${this.$store.state.apiBaseUrl}/api/phonebooks`,
 				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
 				//params: , //get방식 파라미터로 값이 전달
 				//data: , //put, post, delete 방식 자동으로 JSON으로 변환 전달
@@ -86,7 +86,7 @@ export default {
 
 			axios({
 				method: 'delete', // put, post, delete                   
-				url: 'http://localhost:9000/api/phonebooks/' + personId,
+				url: `${this.$store.state.apiBaseUrl}/api/phonebooks/` + personId,
 				headers: { "Content-Type": "application/json; charset=utf-8" }, //전송타입
 				//params:{personId: this.phonebookVo.personId} , //get방식 파라미터로 값이 전달
 				//data:{personId: this.phonebookVo.personId} , //put, post, delete 방식 자동으로 JSON으로 변환 전달
